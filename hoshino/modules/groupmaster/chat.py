@@ -34,10 +34,10 @@ async def chat_laogong(session):
 async def chat_mua(session):
     if not sv.check_priv(session.ctx, Priv.SUPERUSER):
         pic = R.img('偷笑.jpg').cqcode
-        await session.send('四斋蒸鹅心\n{pic}', at_sender=True)
+        await session.send(f'四斋蒸鹅心\n{pic}', at_sender=True)
     else:
         pic = R.img('得意.jpg').cqcode
-        await session.send('笨蛋~\n{pic}', at_sender=True)
+        await session.send(f'笨蛋~\n{pic}', at_sender=True)
 
 @sv.on_command('来点布丁', only_to_me=False)
 async def seina(session):
