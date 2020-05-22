@@ -17,7 +17,7 @@ sv = Service('chat', manage_priv=Priv.SUPERUSER, visible=False)
 @sv.on_command('沙雕机器人', aliases=('沙雕機器人',), only_to_me=False)
 async def say_sorry(session):
     pic_index = random.randint(1, 2)
-    await session.send(R.img('sbot{pic_index}.jpg').cqcodef)
+    await session.send(R.img(f"sbot{pic_index}.jpg").cqcode)
 
 @sv.on_command('老婆', aliases=('waifu', 'laopo'), only_to_me=True)
 async def chat_waifu(session):
@@ -39,7 +39,7 @@ async def chat_mua(session):
         pic = R.img('得意.jpg').cqcode
         await session.send(f'笨蛋~\n{pic}', at_sender=True)
 
-@sv.on_command('来点布丁', only_to_me=False)
+@sv.on_command('来份布丁', aliases=('来份一布丁','来点布丁'), only_to_me=False)
 async def seina(session):
     await session.send(R.img('purin.jpg').cqcode)
 
@@ -65,15 +65,15 @@ async def purin(session):
 
 @sv.on_keyword(('确实', '有一说一', 'u1s1', 'yysy'))
 async def chat_queshi(bot, ctx):
-    if random.random() < 0.05:
+    if random.random() < 0.50:
         await bot.send(ctx, R.img('确实.jpg').cqcode)
 
 @sv.on_keyword(('会战', '刀'))
 async def chat_clanba(bot, ctx):
-    if random.random() < 0.03:
+    if random.random() < 0.10:
         await bot.send(ctx, R.img('我的天啊你看看都几点了.jpg').cqcode)
 
 @sv.on_keyword(('内鬼'))
 async def chat_neigui(bot, ctx):
-    if random.random() < 0.10:
+    if random.random() < 0.20:
         await bot.send(ctx, R.img('内鬼.png').cqcode)
