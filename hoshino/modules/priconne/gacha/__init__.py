@@ -7,6 +7,7 @@ except:
     import json
 
 from hoshino import util
+from hoshino.res import R
 from hoshino import NoneBot, CommandSession, MessageSegment, Service, Privilege as Priv
 from hoshino.util import silence, concat_pic, pic2b64, DailyNumberLimiter
 
@@ -15,7 +16,7 @@ from ..chara import Chara
 
 sv = Service('gacha')
 jewel_limit = DailyNumberLimiter(6000)
-tenjo_limit = DailyNumberLimiter(1)
+tenjo_limit = DailyNumberLimiter(3)
 
 GACHA_DISABLE_NOTICE = '本群转蛋功能已禁用\n如欲开启，请与维护组联系'
 JEWEL_EXCEED_NOTICE = f'您今天已经抽过{jewel_limit.max}钻了，欢迎明早5点后再来！'
@@ -114,6 +115,7 @@ async def gacha_1(session:CommandSession):
         res = f'{chara.icon.cqcode} {res}'
 
     await silence(session.ctx, silence_time)
+    await session.send(R.img('gacha.jpg').cqcode)
     await session.send(f'素敵な仲間が増えますよ！\n{res}\n{SWITCH_POOL_TIP}', at_sender=True)
 
 
@@ -148,6 +150,7 @@ async def gacha_10(session:CommandSession):
 
     if hiishi >= SUPER_LUCKY_LINE:
         await session.send('恭喜海豹！おめでとうございます！')
+    await session.send(R.img('gacha.jpg').cqcode)
     await session.send(f'素敵な仲間が増えますよ！\n{res}\n{SWITCH_POOL_TIP}', at_sender=True)
     await silence(session.ctx, silence_time)
 
@@ -212,7 +215,7 @@ async def gacha_300(session:CommandSession):
     elif up >= 4:
         msg.append("记忆碎片一大堆！您是托吧？")
     msg.append(SWITCH_POOL_TIP)
-
+    await session.send(R.img('gacha.jpg').cqcode)
     await session.send('\n'.join(msg), at_sender=True)
     silence_time = (100*up + 50*(up+s3) + 10*s2 + s1) * 1
     await silence(session.ctx, silence_time)
