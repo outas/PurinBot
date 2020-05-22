@@ -45,7 +45,7 @@ gacha_10_aliases = ('抽十连', '十连', '十连！', '十连抽', '来个十�
                     '10連', '10連！', '10連抽', '來個10連', '來發10連', '來次10連', '抽個10連', '抽發10連', '抽次10連', '10連轉蛋', '轉蛋10連')
 gacha_1_aliases = ('单抽', '单抽！', '来发单抽', '来个单抽', '来次单抽', '扭蛋单抽', '单抽扭蛋',
                    '單抽', '單抽！', '來發單抽', '來個單抽', '來次單抽', '轉蛋單抽', '單抽轉蛋')
-gacha_300_aliases = ('抽一井', '来一井', '来发井', '抽发井', '天井扭蛋', '扭蛋天井', '天井轉蛋', '轉蛋天井')
+gacha_300_aliases = ('抽一井', '再抽一井', '来一井', '再来一井', '来发井', '抽发井', '天井扭蛋', '扭蛋天井', '天井轉蛋', '轉蛋天井')
 
 @sv.on_command('卡池资讯', deny_tip=GACHA_DISABLE_NOTICE, aliases=('查看卡池', '看看卡池', '康康卡池', '卡池資訊', '看看up', '看看UP'), only_to_me=False)
 async def gacha_info(session:CommandSession):
@@ -100,6 +100,10 @@ async def check_tenjo_num(session):
 
 @sv.on_command('gacha_1', deny_tip=GACHA_DISABLE_NOTICE, aliases=gacha_1_aliases, only_to_me=True)
 async def gacha_1(session:CommandSession):
+    if random.random() < 0.50:
+        pic = R.img('gacha.jpg').cqcode
+        await session.send(f'\n{pic}', at_sender=True)
+        return
 
     await check_jewel_num(session)
     uid = session.ctx['user_id']
@@ -115,12 +119,16 @@ async def gacha_1(session:CommandSession):
         res = f'{chara.icon.cqcode} {res}'
 
     await silence(session.ctx, silence_time)
-    await session.send(R.img('gacha.jpg').cqcode)
     await session.send(f'素敵な仲間が増えますよ！\n{res}\n{SWITCH_POOL_TIP}', at_sender=True)
 
 
 @sv.on_command('gacha_10', deny_tip=GACHA_DISABLE_NOTICE, aliases=gacha_10_aliases, only_to_me=True)
 async def gacha_10(session:CommandSession):
+    if random.random() < 0.50:
+        pic = R.img('gacha.jpg').cqcode
+        await session.send(f'\n{pic}', at_sender=True)
+        return
+
     SUPER_LUCKY_LINE = 170
 
     await check_jewel_num(session)
@@ -150,13 +158,16 @@ async def gacha_10(session:CommandSession):
 
     if hiishi >= SUPER_LUCKY_LINE:
         await session.send('恭喜海豹！おめでとうございます！')
-    await session.send(R.img('gacha.jpg').cqcode)
     await session.send(f'素敵な仲間が増えますよ！\n{res}\n{SWITCH_POOL_TIP}', at_sender=True)
     await silence(session.ctx, silence_time)
 
 
 @sv.on_command('gacha_300', deny_tip=GACHA_DISABLE_NOTICE, aliases=gacha_300_aliases, only_to_me=True)
 async def gacha_300(session:CommandSession):
+    if random.random() < 0.50:
+        pic = R.img('gacha.jpg').cqcode
+        await session.send(f'\n{pic}', at_sender=True)
+        return
 
     await check_tenjo_num(session)
     uid = session.ctx['user_id']
@@ -215,7 +226,6 @@ async def gacha_300(session:CommandSession):
     elif up >= 4:
         msg.append("记忆碎片一大堆！您是托吧？")
     msg.append(SWITCH_POOL_TIP)
-    await session.send(R.img('gacha.jpg').cqcode)
     await session.send('\n'.join(msg), at_sender=True)
     silence_time = (100*up + 50*(up+s3) + 10*s2 + s1) * 1
     await silence(session.ctx, silence_time)
