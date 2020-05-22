@@ -16,8 +16,8 @@ sv = Service('chat', manage_priv=Priv.SUPERUSER, visible=False)
 
 @sv.on_command('沙雕机器人', aliases=('沙雕機器人',), only_to_me=False)
 async def say_sorry(session):
-    pic_index = random.randint(1, 2);
-    await session.send(f"sbot{pic_index}.jpg").cqcode)
+    pic_index = random.randint(1, 2)
+    await session.send(R.img('sbot{pic_index}.jpg').cqcodef)
 
 @sv.on_command('老婆', aliases=('waifu', 'laopo'), only_to_me=True)
 async def chat_waifu(session):
