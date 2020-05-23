@@ -53,6 +53,14 @@ async def nihaole(session):
     await session.send('不许好，憋回去！')
     await util.silence(session.ctx, 30)
 
+@sv.on_command('今天穿的什么胖次', aliases=('看看胖次', ), only_to_me=True)
+async def panci(session):
+    if not sv.check_priv(session.ctx, Priv.SUPERUSER):
+        await session.send(f'给👴爬', at_sender=True)
+    else:
+        pic = R.img('胖次.jpg').cqcode
+        await session.send(f'耻ずかしい~\n{pic}', at_sender=False)
+
 @sv.on_command('?', aliases=('？'), only_to_me=False)
 async def question(session):
     await session.send(R.img('问号.jpg').cqcode)
