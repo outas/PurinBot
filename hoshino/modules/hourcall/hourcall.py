@@ -1,9 +1,10 @@
 import pytz
 from datetime import datetime
 from hoshino import util
+from hoshino.res import R
 from hoshino.service import Service
 
-sv = Service('hourcall', enable_on_default=False)
+sv = Service('hourcall', enable_on_default=True)
 
 def get_hour_call():
     """从HOUR_CALLS中挑出一组时报，每日更换，一日之内保持相同"""
@@ -13,10 +14,9 @@ def get_hour_call():
     g = hc_groups[ now.day % len(hc_groups) ]
     return config[g]
 
-@sv.scheduled_job('cron', hour='*')
+@sv.scheduled_job('cron', hour='*', )
 async def hour_call():
     now = datetime.now(pytz.timezone('Asia/Shanghai'))
-    if 2 <= now.hour <= 4:
-        return  # 宵禁 免打扰
-    msg = get_hour_call()[now.hour]
-    await sv.broadcast(msg, 'hourcall', 0)
+    if now.hour % 6 == 0:
+        return
+    await sv.broadcast(str(R.img('买药.jpg').cqcode), 'hourcall', 0)
