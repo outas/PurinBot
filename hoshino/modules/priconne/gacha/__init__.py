@@ -100,7 +100,7 @@ async def check_tenjo_num(session):
 
 @sv.on_command('gacha_1', deny_tip=GACHA_DISABLE_NOTICE, aliases=gacha_1_aliases, only_to_me=True)
 async def gacha_1(session:CommandSession):
-    if random.random() < 0.50:
+    if random.random() < 0.20:
         pic = R.img('gacha.jpg').cqcode
         await session.send(f'\n{pic}', at_sender=True)
         return
@@ -124,7 +124,7 @@ async def gacha_1(session:CommandSession):
 
 @sv.on_command('gacha_10', deny_tip=GACHA_DISABLE_NOTICE, aliases=gacha_10_aliases, only_to_me=True)
 async def gacha_10(session:CommandSession):
-    if random.random() < 0.50:
+    if random.random() < 0.20:
         pic = R.img('gacha.jpg').cqcode
         await session.send(f'\n{pic}', at_sender=True)
         return
@@ -164,7 +164,7 @@ async def gacha_10(session:CommandSession):
 
 @sv.on_command('gacha_300', deny_tip=GACHA_DISABLE_NOTICE, aliases=gacha_300_aliases, only_to_me=True)
 async def gacha_300(session:CommandSession):
-    if random.random() < 0.50:
+    if random.random() < 0.20:
         pic = R.img('gacha.jpg').cqcode
         await session.send(f'\n{pic}', at_sender=True)
         return
