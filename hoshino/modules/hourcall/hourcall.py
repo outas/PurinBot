@@ -17,6 +17,6 @@ def get_hour_call():
 @sv.scheduled_job('cron', hour='*', )
 async def hour_call():
     now = datetime.now(pytz.timezone('Asia/Shanghai'))
-    if now.hour % 6 == 0:
+    if not now.hour % 6 == 0:
         return
     await sv.broadcast(str(R.img('买药.jpg').cqcode), 'hourcall', 0)
