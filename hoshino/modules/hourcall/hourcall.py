@@ -4,6 +4,7 @@ from hoshino import util
 from hoshino.res import R
 from hoshino.service import Service
 
+# 设置不生效，优先读取配置文件设置
 sv = Service('hourcall', enable_on_default=True)
 
 def get_hour_call():
