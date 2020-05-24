@@ -44,6 +44,6 @@ MODULES_ON = {
     'pcrclanbattle',
     'priconne',
     'setu',
-    'translate',
+    # 'translate',
     # 'twitter',
 }
