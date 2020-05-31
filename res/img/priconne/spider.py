@@ -81,8 +81,9 @@ class Spider(object):
 if __name__ == '__main__':
     spider = Spider()
     # 运行过程出现404和200属正常情况
-    spider.download_icon_unit(start=1001, end=1200, star=3)
-    spider.download_icon_unit(start=1001, end=1200, star=6)
-    spider.download_icon_unit(start=1804, end=1805, star=3)
+    # spider.download_icon_unit(start=1001, end=1200, star=3)
+    # spider.download_icon_unit(start=1001, end=1200, star=6)
+    # start:起始 end:结束 star:星数
+    spider.download_icon_unit(start=1804, end=1905, star=3)
     # 如果需要爬取漫画，取消掉下面的这行注释
     # spider.download_comic(start=1, end=200, only_index=False)
