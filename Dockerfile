@@ -16,7 +16,8 @@ WORKDIR /home/PurinBot
 # 复制当前代码文件到容器中
 ADD . /home/PurinBot
   
-# 安装所需的包
+# 初始化
+RUN cp ./config.example.py config.py
 RUN pip install -r requirements.txt
   
 # bot启动命令
