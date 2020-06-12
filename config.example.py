@@ -20,7 +20,7 @@ HOST = '127.0.0.1'      # Windows部署使用此条配置
 # HOST = '172.18.0.1'   # 阿里云的linux + docker多数情况是这样
 # HOST = '0.0.0.0'      # 开放公网访问使用此条配置（不安全）
 
-IS_CQPRO = False        # 是否使用Pro版酷Q功能
+IS_CQPRO = True        # 是否使用Pro版酷Q功能
 
 # 资源库文件夹  Nonebot访问本机资源
 RESOURCE_DIR = './res/'
