@@ -1,7 +1,5 @@
-# 作者
-MAINTAINER outas<937023449@qq.com>
 #=============酷Q=============
-FROM richardchien/cqhttp:latest
+FROM richardchien/cqhttp:latest AS cqhttp
 
 EXPOSE 9000
 
@@ -13,9 +11,9 @@ ENV CQHTTP_USE_HTTP no
 ENV CQHTTP_USE_WS_REVERSE yes
 ENV CQHTTP_WS_REVERSE_URL ws://127.0.0.1:8080/ws/
 ENV CQHTTP_WS_REVERSE_USE_UNIVERSAL_CLIENT yes
-
-
 #=============bot=============
+# 作者
+MAINTAINER outas<937023449@qq.com>
 # 基于镜像基础
 FROM python:3.8.1
 # 暴露的端口
